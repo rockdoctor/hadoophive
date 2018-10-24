@@ -1,5 +1,8 @@
 FROM ubuntu:16.04
 
+# For Cleanup at End
+WORKDIR /tmp
+
 # Update apt
 RUN apt-get update
 RUN apt-get -yqq upgrade
@@ -38,3 +41,8 @@ RUN wget -q https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar -O $HIV
 
 # Add Hive and Hadoop home dir to PATH
 ENV PATH=$PATH:$HIVE_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+# Cleanup
+RUN rm -rf /tmp/*
+RUN apt-get clean
+WORKDIR /root
