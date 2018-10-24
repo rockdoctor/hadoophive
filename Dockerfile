@@ -35,3 +35,6 @@ RUN wget -q https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-
 RUN tar -xzf apache-hive-$HIVE_VERSION-bin.tar.gz -C /usr/local/
 RUN mv /usr/local/apache-hive-$HIVE_VERSION-bin /usr/local/hive
 RUN wget -q https://jdbc.postgresql.org/download/postgresql-9.4.1212.jar -O $HIVE_HOME/lib/postgresql-jdbc.jar
+
+# Add Hive and Hadoop home dir to PATH
+ENV PATH=$PATH:$HIVE_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
