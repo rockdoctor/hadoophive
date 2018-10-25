@@ -15,12 +15,14 @@ RUN update-rc.d ntp defaults
 RUN apt-get -yqq install build-essential vim git wget bzip2 openssh-server
 
 # Install JAVA
-RUN apt-get -yqq install openjdk-8-jre
+RUN apt-get -yqq install openjdk-8-jdk
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN update-alternatives --install "/usr/bin/java" "java" "${JAVA_HOME}/bin/java" 1 && \
-    update-alternatives --set java "${JAVA_HOME}/bin/java"
+    update-alternatives --install "/usr/bin/javac" "javac" "${JAVA_HOME}/bin/javac" 1 && \
+    update-alternatives --set java "${JAVA_HOME}/bin/java" && \
+    update-alternatives --set javac "${JAVA_HOME}/bin/javac"
 
 # Install Hadoop
 ENV HADOOP_VERSION 2.9.1
