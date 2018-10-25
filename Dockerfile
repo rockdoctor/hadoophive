@@ -32,7 +32,7 @@ ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 ENV YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
 # Install Hive
-ENV HIVE_VERSION 3.0.0
+ENV HIVE_VERSION 2.3.2
 ENV HIVE_HOME=/usr/local/hive
 RUN wget -q https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz
 RUN tar -xzf apache-hive-$HIVE_VERSION-bin.tar.gz -C /usr/local/
